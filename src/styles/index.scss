@@ -1,0 +1,18 @@
+@import "./helpers/variables.scss";
+@import "./helpers/mixins.scss";
+@import "./helpers/reset.scss";
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 20px;
+  @include res(m) {
+    padding: 0 12px;
+  }
+}
+
+h1,
+h2,
+h3 {
+  font-family: $font-header;
+}

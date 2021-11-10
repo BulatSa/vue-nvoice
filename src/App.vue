@@ -1,32 +1,56 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+  <div id="app" class="container">
+    <div class="header">
+      <router-link to="/"><h1>Natural Voice</h1></router-link>
     </div>
-    <router-view/>
+    <transition name="fade" mode="out-in">
+      <router-view />
+    </transition>
   </div>
 </template>
 
-<style lang="scss">
+<script>
+import { Component, Vue } from 'vue-property-decorator';
+import DayList from './components/DayList.vue';
+
+@Component({
+  components: {
+    DayList,
+  },
+})
+
+export default class App extends Vue {}
+</script>
+
+<style lang="scss" scoped>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+}
+.header {
+  margin-top: 20px;
+  margin-bottom: 50px;
   text-align: center;
-  color: #2c3e50;
+  color: #fff;
+  a {
+    color: #fff;
+  }
 }
 
-#nav {
-  padding: 30px;
+.fade-enter {
+  opacity: 0;
+  transform: translate3d(100px,0,0);
+}
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+.fade-enter-active {
+  transition: all 0.3s ease;
+}
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+.fade-leave-to {
+  opacity: 0;
+  transform: translate3d(-100px,0,0);
+}
+
+.fade-leave-active {
+  transition: all 0.3s ease;
 }
 </style>
